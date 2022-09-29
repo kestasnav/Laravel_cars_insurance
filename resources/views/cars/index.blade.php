@@ -1,0 +1,34 @@
+@extends('layouts.carsLayout')
+@section('content')
+    <a class="btn btn-primary float-end" href="{{ route('cars.create') }}">Add new Car</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Valstybiniai numeriai</th>
+            <th>Automobilio markė</th>
+            <th>Automobilio modelis</th>
+            <th>Savininko ID</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($cars as $car)
+            <tr>
+                <td>{{ $car->reg_number }}</td>
+                <td>{{ $car->brand }}</td>
+                <td>{{ $car->model }}</td>
+                <td>{{ $car->owner_id }}</td>
+                <td><a class="btn btn-success" href="{{ route('cars.edit', $car->id) }}">Update</a> </td>
+                <td>
+                    <form action="{{ route('cars.destroy', $car->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+@endsection

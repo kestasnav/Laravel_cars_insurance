@@ -8,20 +8,24 @@
 </head>
 <body>
 <div class="container">
-    <a class="btn btn-success mt-3" href="{{ route('owners.index') }}">Owners Page</a>
-    <div class="row">
-        <div class="col-md-12 mt-5">
-            <div class="card">
-                <div class="card-header">Cars</div>
-                <div class="card-body">
-                    @yield('content')
-                </div>
+    <nav class="navbar navbar-expand-lg bg-info mt-1">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Insurance</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-success mx-3" href="{{ route('cars.index') }}">Cars Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-success" href="{{ route('owners.index') }}">Owners Page</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+                    @yield('content')
 
-    </div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>

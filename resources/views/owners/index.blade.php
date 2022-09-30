@@ -1,5 +1,10 @@
-@extends('layouts.ownersLayout')
+@extends('layouts.main')
 @section('content')
+    <div class="row">
+        <div class="col-md-12 mt-5">
+            <div class="card">
+                <div class="card-header">Owners</div>
+                <div class="card-body">
     <a class="btn btn-primary float-end" href="{{ route('owners.create') }}">Add new Owner</a>
     <table class="table">
         <thead>
@@ -27,4 +32,9 @@
         @endforeach
         </tbody>
     </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
 @endsection

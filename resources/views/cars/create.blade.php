@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 @section('content')
 
     <div class="row">
@@ -21,8 +21,13 @@
                             <input class="form-control" type="text" name="model">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Savininko ID</label>
-                            <input class="form-control" type="text" name="owner_id">
+                            <label for="" class="form-label">Savininkas</label>
+                            <select class="form-control" name="owner_id">
+                                <option selected>Pasrinkti</option>
+                                @foreach($owners as $owner)
+                                    <option value="{{$owner->id}}">{{$owner->name}} {{$owner->surname}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
 

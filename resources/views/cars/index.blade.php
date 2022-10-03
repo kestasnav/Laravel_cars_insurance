@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 @section('content')
     <div class="row">
         <div class="col-md-12 mt-5">
@@ -12,7 +12,7 @@
                             <th>Valstybiniai numeriai</th>
                             <th>Automobilio markė</th>
                             <th>Automobilio modelis</th>
-                            <th>Savininko ID</th>
+                            <th>Savininkas</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -23,7 +23,10 @@
                                 <td>{{ $car->reg_number }}</td>
                                 <td>{{ $car->brand }}</td>
                                 <td>{{ $car->model }}</td>
-                                <td>{{ $car->owner_id }}</td>
+                                <td>
+                                    {{ $car->owner->name }}
+                                    {{ $car->owner->surname }}
+                                </td>
                                 <td><a class="btn btn-success" href="{{ route('cars.edit', $car->id) }}">Update</a></td>
                                 <td>
                                     <form action="{{ route('cars.destroy', $car->id) }}" method="post">

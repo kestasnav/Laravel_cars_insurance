@@ -11,6 +11,7 @@
         <tr>
             <th>Vardas</th>
             <th>Pavardė</th>
+            <th>El. Paštas</th>
             <th>Turimi Automobiliai</th>
             <th></th>
             <th></th>
@@ -21,6 +22,7 @@
             <tr>
                 <td>{{ $owner->name }}</td>
                 <td>{{ $owner->surname }}</td>
+                <td>{{ $owner->email }}</td>
                 <td>
                     @foreach($owner->car as $oc)
                    [{{ $oc->brand }}

@@ -41,6 +41,25 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'reg_number' => 'required|min:2|max:6|unique:cars',
+            'brand' => 'required|min:2|max:16',
+            'model' => 'required|min:2|max:16',
+            'owner_id' => 'required',
+        ],
+        [
+            'reg_number.required' => 'Valstybinis numeris privalomas',
+            'reg_number.min' => 'Valstybinis numeris negali būti trumpesnis, nei 2 simboliai',
+            'reg_number.max' => 'Valstybinis numeris negali būti ilgesnis, nei 6 simboliai',
+            'reg_number.unique' => 'Toks valstybinis numeris, jau egzistuoja',
+            'brand.required' => 'Automobilio markė privaloma',
+            'brand.min' => 'Automobilio markės pavadinimas, negali būti trumpesnis, nei 2 simboliai',
+            'brand.max' => 'Automobilio markės pavadinimas, negali būti ilgesnis, nei 16 simbolių',
+            'model.required' => 'Automobilio modelis privalomas',
+            'model.min' => 'Automobilio modelio pavadinimas, negali būti trumpesnis, nei 2 simboliai',
+            'model.max' => 'Automobilio modelio pavadinimas, negali būti ilgesnis, nei 16 simbolių',
+            'owner_id.required' => 'Automobilio savininkas privalomas',
+        ]);
         $car = new Car();
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
@@ -82,6 +101,26 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
+        $request->validate([
+            'reg_number' => 'required|digits|min:2|max:6|unique:cars',
+            'brand' => 'required|min:2|max:16',
+            'model' => 'required|min:2|max:16',
+            'owner_id' => 'required',
+        ],
+            [
+                'reg_number.required' => 'Valstybinis numeris privalomas',
+                'reg_number.min' => 'Valstybinis numeris negali būti trumpesnis, nei 2 simboliai',
+                'reg_number.max' => 'Valstybinis numeris negali būti ilgesnis, nei 6 simboliai',
+                'reg_number.unique' => 'Toks valstybinis numeris, jau egzistuoja',
+                'brand.required' => 'Automobilio markė privaloma',
+                'brand.min' => 'Automobilio markės pavadinimas, negali būti trumpesnis, nei 2 simboliai',
+                'brand.max' => 'Automobilio markės pavadinimas, negali būti ilgesnis, nei 16 simbolių',
+                'model.required' => 'Automobilio modelis privalomas',
+                'model.min' => 'Automobilio modelio pavadinimas, negali būti trumpesnis, nei 2 simboliai',
+                'model.max' => 'Automobilio modelio pavadinimas, negali būti ilgesnis, nei 16 simbolių',
+                'owner_id.required' => 'Automobilio savininkas privalomas',
+            ]
+        );
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
         $car->model=$request->model;

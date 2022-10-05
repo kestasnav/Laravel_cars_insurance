@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header">Cars</div>
                 <div class="card-body">
-                    <a class="btn btn-primary float-end" href="{{ route('cars.create') }}">Add new Car</a>
+                    <a class="btn btn-primary float-end " href="{{ route('cars.create') }}">Add new Car</a>
                     <table class="table">
                         <thead>
                         <tr>

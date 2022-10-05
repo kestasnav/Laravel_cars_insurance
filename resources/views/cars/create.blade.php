@@ -38,9 +38,9 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Savininkas</label>
                             <select class="form-control @error('owner_id') is-invalid @enderror" name="owner_id" >
-                                <option selected>Pasrinkti</option>
+                               <option selected>Pasirinkti</option>
                                 @foreach($owners as $owner)
-                                    <option value="{{$owner->id}}">{{$owner->name}} {{$owner->surname}}</option>
+                                    <option value="{{$owner->id}}" @selected(old('owner_id')==$owner->id) )> {{$owner->name}} {{$owner->surname}}</option>
                                 @endforeach
                             </select>
                             @error('owner_id')

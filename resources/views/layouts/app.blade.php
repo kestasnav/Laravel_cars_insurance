@@ -33,10 +33,13 @@
             <ul class="navbar-nav me-auto">
 
                 <li class="nav-item">
-                    <a class="btn btn-success mx-3" href="{{ route('cars.index') }}">Cars Page</a>
+                    <a class="btn btn-success " href="{{ route('cars.index') }}">Cars Page</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-success" href="{{ route('owners.index') }}">Owners Page</a>
+                    <a class="btn btn-success mx-3" href="{{ route('owners.index') }}">Owners Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-success" href="{{ route('shorts.index') }}">Short Codes Page</a>
                 </li>
 
             </ul>

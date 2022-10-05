@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Owner;
+
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -28,8 +29,9 @@ class CarController extends Controller
      */
     public function create()
     {
+        $car=Car::all();
         $owners=Owner::all();
-        return view('cars.create', ['owners'=>$owners]);
+        return view('cars.create', ['car'=>$car,'owners'=>$owners]);
 
     }
 

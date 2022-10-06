@@ -9,6 +9,7 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th>Automobilio nuotrauka</th>
                             <th>Valstybiniai numeriai</th>
                             <th>Automobilio markė</th>
                             <th>Automobilio modelis</th>
@@ -18,8 +19,16 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         @foreach($cars as $car)
                             <tr>
+                                <td>
+                                    @foreach($images as $image)
+                                    @if ($image->car_id == $car->id)
+                                        <img src="{{ route('image.cars',$image->img) }}" style=" width: 150px; height: 150px;">
+                                    @endif
+                                    @endforeach
+                                </td>
                                 <td>{{ $car->reg_number }}</td>
                                 <td>{{ $car->brand }}</td>
                                 <td>{{ $car->model }}</td>
@@ -37,6 +46,7 @@
                                 </td>
                             </tr>
                         @endforeach
+
                         </tbody>
                     </table>
                 </div>

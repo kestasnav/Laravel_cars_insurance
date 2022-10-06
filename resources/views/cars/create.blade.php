@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">Create form</div>
                 <div class="card-body">
-                    <form action="{{ route('cars.store') }}" method="post">
+                    <form action="{{ route('cars.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Valstybiniai numeriai</label>
@@ -48,6 +48,10 @@
                                 <div class="alert alert-danger"> {{ $error }} </div>
                             @endforeach
                             @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Automobilio nuotrauka:</label>
+                            <input type="file" class="form-control" name="image">
                         </div>
 
 

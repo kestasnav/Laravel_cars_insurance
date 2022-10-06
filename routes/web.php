@@ -22,18 +22,13 @@ Route::middleware( 'ShortC')->group(function () {
 
 });
 
-////Route::middleware( 'userType')->group(function () {
-//
-//
-//
-////    Route::get('/cars.create', function () {
-////        return view('cars.index');
-////    });
-//
-//    Route::get('/cars.{id).edit',[CarController::class]);
-////    Route::post('/owners.create',[CarController::class]);
-////    Route::post('/owners.{id).edit',[CarController::class]);
-//});
+Route::get('/image/{name}',[CarController::class, 'display'])
+    ->name('image.cars')
+    ->middleware('auth');
+
+//Route::get('/carImage/{id}',[CarController::class, 'carImage'])
+//    ->name('image.cars')
+//    ->middleware('auth');
 
 Route::resource('shorts', ShortCodeController::class);
 

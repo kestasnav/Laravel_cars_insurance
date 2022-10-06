@@ -71,7 +71,8 @@ class ShortCodeController extends Controller
      * @param  \App\Models\ShortCode  $shortCode
      * @return \Illuminate\Http\Response
      */
-    public function edit(ShortCode $shortCode)    {
+    public function edit( $shortCode)    {
+        $shortCode=ShortCode::find($shortCode);
 
         return view('shorts.update', ['shortCode'=>$shortCode]);
     }
@@ -83,9 +84,9 @@ class ShortCodeController extends Controller
      * @param  \App\Models\ShortCode  $shortCode
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ShortCode $shortCode)
+    public function update(Request $request,  $shortCode)
     {
-
+        $shortCode=ShortCode::find($shortCode);
         $shortCode->shortcode=$request->shortcode;
         $shortCode->replace=$request->replace;
 
@@ -100,8 +101,9 @@ class ShortCodeController extends Controller
      * @param  \App\Models\ShortCode  $shortCode
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ShortCode $shortCode)
+    public function destroy( $shortCode)
     {
+        $shortCode=ShortCode::find($shortCode);
         $shortCode->delete();
         return redirect()->route('shorts.index');
     }

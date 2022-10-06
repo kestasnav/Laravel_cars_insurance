@@ -17,11 +17,11 @@ class userType
     public function handle(Request $request, Closure $next)
     {
         if ($request->user()==null){
-            return redirect('/owners');
+            return redirect('/cars');
         }
 
         if ($request->user()->type=='user'){
-            return redirect('/owners');
+            return redirect('/cars');
         }
 
         return $next($request);

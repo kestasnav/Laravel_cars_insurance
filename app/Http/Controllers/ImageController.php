@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Car;
 use App\Models\Owner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -16,7 +17,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        //return view('cars.index');
     }
 
     /**
@@ -26,7 +27,8 @@ class ImageController extends Controller
      */
     public function create()
     {
-
+        $image=Image::all();
+        return view('images.create', ['image'=>$image]);
     }
 
     /**
@@ -37,7 +39,19 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
+        $image = new Image();
 
+        $img=$request->file('image');
+
+        $filename=$request->car_id.'_'.rand().'.'.$img->extension();
+
+        $image->img=$filename;
+        $image->car_id=$request->car_id;
+
+        $img->storeAs('cars',$filename);
+        $image->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -82,19 +96,34 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy(Image $image, Request $request)
     {
-        //
+      // dd('app/cars/'.$image->img);
+       // $path=storage_path('app/cars/');
+     //  dd($path);
+        //Storage::delete('app/cars/'.$image->img);
+       // Storage::disk('s3')->delete('app/cars/'.$image->img);
+//        $files = Storage::files('app/cars/');
+//              dd($files);
+//        if(is_file($image->img))
+//        {
+//            unlink(public_path('app/cars/'. $image->img));
+//       // unlink(storage_path('app/cars/'.$image->img));
+//        }
+//        else {
+//            dd( "File does not exist");
+//        }
+//        if(Storage::exists('app/cars/'.$image->img)){
+//            Storage::delete('app/cars/'.$image->img);
+//
+//        }else{
+//           // dd('File does not exist.');
+//        }
+
+        $image->delete();
+
+        return redirect()->back();
     }
 
-//    public function display($name,Request $request){
-//        $file=storage_path('app/'.$name);
-//        return response()->file( $file );
-//    }
-//
-//    public function productImage($carId){
-//        $car=Car::find($carId);
-//        $file=storage_path('app/cars/'.$car->id);
-//        return response()->file( $file );
-//    }
-//}
+
+}

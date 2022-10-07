@@ -36,6 +36,7 @@ class OwnerController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|min:2|max:16',
             'surname' => 'required|min:2|max:16',
@@ -90,29 +91,30 @@ class OwnerController extends Controller
      */
     public function update(Request $request, Owner $owner)
     {
-        $request->validate([
-            'name' => 'required|min:2|max:16',
-            'surname' => 'required|min:2|max:16',
-            'email' => 'required|unique:owners|max:24|email:rfc,dns',
-        ], [
-                'name.required' => 'Vardas privalomas',
-                'name.min' => 'Vardas negali būti trumpesnis, nei 2 simboliai',
-                'name.max' => 'Vardas negali būti ilgesnis, nei 16 simbolių',
-                'surname.required' => 'Pavardė privaloma',
-                'surname.max' => 'Pavardė negali būti trumpesnė, nei 2 simboliai',
-                'surname.max' => 'Pavardė negali būti ilgesnė, nei 16 simbolių',
-                'email.required' => 'Elektroninis paštas privalomas',
-                'email.unique' => 'Toks elektroninis paštas jau panaudotas',
-                'email.max' => 'Elektroninis paštas negali būti ilgesnis, nei 24 simboliai',
-            ]
-        );
-        $owner->name=$request->name;
-        $owner->surname=$request->surname;
-        $owner->email=$request->email;
-        $owner->save();
-        return redirect()->route('owners.index');
+        if ($owner->email = $request->email) {
+            $request->validate([
+                'name' => 'required|min:2|max:16',
+                'surname' => 'required|min:2|max:16',
+                'email' => 'required|unique:owners|max:24|email:rfc,dns',
+            ], [
+                    'name.required' => 'Vardas privalomas',
+                    'name.min' => 'Vardas negali būti trumpesnis, nei 2 simboliai',
+                    'name.max' => 'Vardas negali būti ilgesnis, nei 16 simbolių',
+                    'surname.required' => 'Pavardė privaloma',
+                    'surname.max' => 'Pavardė negali būti trumpesnė, nei 2 simboliai',
+                    'surname.max' => 'Pavardė negali būti ilgesnė, nei 16 simbolių',
+                    'email.required' => 'Elektroninis paštas privalomas',
+                    'email.unique' => 'Toks elektroninis paštas jau panaudotas',
+                    'email.max' => 'Elektroninis paštas negali būti ilgesnis, nei 24 simboliai',
+                ]
+            );
+            $owner->name = $request->name;
+            $owner->surname = $request->surname;
+            $owner->email = $request->email;
+            $owner->save();
+            return redirect()->route('owners.index');
+        }
     }
-
     /**
      * Remove the specified resource from storage.
      *

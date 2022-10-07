@@ -2,10 +2,11 @@
 
 
 use App\Http\Controllers\CarController;
-use App\Http\Controllers\redirectTo;
+
 use App\Http\Controllers\ShortCodeController;
 use App\Models\Car;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\ImageController;
 use App\Models\Owner;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,8 @@ Route::get('/image/{name}',[CarController::class, 'display'])
 //    ->middleware('auth');
 
 Route::resource('shorts', ShortCodeController::class);
+
+Route::resource('images', ImageController::class);
 
 Auth::routes();
 

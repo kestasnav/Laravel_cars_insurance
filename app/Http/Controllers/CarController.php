@@ -82,6 +82,7 @@ class CarController extends Controller
         return redirect()->route('cars.index');
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -90,7 +91,9 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        //
+        $images=Image::all();
+        $owners=Owner::all();
+        return view('cars.show', ['car'=>$car, 'owners'=>$owners, 'images'=>$images]);
     }
 
     /**
@@ -143,18 +146,6 @@ class CarController extends Controller
         $car->owner_id=$request->owner_id;
 
         $car->save();
-        $insertedId=$car->id;
-        //$image=Image::find($insertedId);
-        $image = new Image();
-
-        $img=$request->file('image');
-        $filname=$insertedId.'.'.$img->extension();
-
-        $image->img=$filname;
-        $image->car_id=$insertedId;
-        $img->storeAs('cars',$filname);
-        $image->save();
-
 
         return redirect()->route('cars.index');
     }

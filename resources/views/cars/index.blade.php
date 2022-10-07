@@ -10,6 +10,7 @@
                         <thead>
                         <tr>
                             <th>Automobilio nuotrauka</th>
+                            <th>Nuotraukų galerija</th>
                             <th>Valstybiniai numeriai</th>
                             <th>Automobilio markė</th>
                             <th>Automobilio modelis</th>
@@ -23,12 +24,15 @@
                         @foreach($cars as $car)
                             <tr>
                                 <td>
-                                    @foreach($images as $image)
+                                   @foreach($images as $image)
                                     @if ($image->car_id == $car->id)
+
                                         <img src="{{ route('image.cars',$image->img) }}" style=" width: 150px; height: 150px;">
-                                    @endif
+                                            @break
+                                        @endif
                                     @endforeach
                                 </td>
+                                <td> <a class="btn btn-primary " href="{{ route('cars.show', $car->id) }}">Galery</a></td>
                                 <td>{{ $car->reg_number }}</td>
                                 <td>{{ $car->brand }}</td>
                                 <td>{{ $car->model }}</td>

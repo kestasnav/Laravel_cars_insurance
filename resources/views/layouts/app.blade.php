@@ -22,7 +22,7 @@
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
 {{--            {{ config('app.name', 'Insurance') }}--}}
-            <h4>Insurance</h4>
+            <h4>{{__('Draudimas')}}</h4>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -33,19 +33,25 @@
             <ul class="navbar-nav me-auto">
 
                 <li class="nav-item">
-                    <a class="btn btn-success " href="{{ route('cars.index') }}">Cars Page</a>
+                    <a class="btn btn-success " href="{{ route('cars.index') }}">{{__('Automobilių puslapis')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-success mx-3" href="{{ route('owners.index') }}">Owners Page</a>
+                    <a class="btn btn-success mx-3" href="{{ route('owners.index') }}">{{__('Savininkų puslapis')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-success" href="{{ route('shorts.index') }}">Short Codes Page</a>
+                    <a class="btn btn-success" href="{{ route('shorts.index') }}">{{__('Trumpūjų kodų puslapis')}}</a>
                 </li>
 
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="btn btn-success" href="{{ route('setLang', 'lt') }}">LT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-success mx-1" href="{{ route('setLang', 'en') }}">EN</a>
+                </li>
                 <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))

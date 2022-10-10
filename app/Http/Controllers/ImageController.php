@@ -99,16 +99,17 @@ class ImageController extends Controller
     public function destroy(Image $image, Request $request)
     {
       // dd('app/cars/'.$image->img);
-       // $path=storage_path('app/cars/');
-     //  dd($path);
-        //Storage::delete('app/cars/'.$image->img);
+      //  $path=storage_path('app/cars/');
+
+        unlink( storage_path('/app/cars/'.$image->img));
+       // dd(storage_path('/app/cars/'.$image->img));
        // Storage::disk('s3')->delete('app/cars/'.$image->img);
-//        $files = Storage::files('app/cars/');
-//              dd($files);
+      // $files = Storage::files('app/cars/');
+         //    dd($files);
 //        if(is_file($image->img))
 //        {
 //            unlink(public_path('app/cars/'. $image->img));
-//       // unlink(storage_path('app/cars/'.$image->img));
+//        unlink(storage_path('app/cars/'.$image->img));
 //        }
 //        else {
 //            dd( "File does not exist");

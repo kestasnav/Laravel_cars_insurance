@@ -3,18 +3,18 @@
     <div class="row">
         <div class="col-md-12 mt-5">
             <div class="card">
-                <div class="card-header">Cars</div>
+                <div class="card-header">{{__('Automobiliai')}}</div>
                 <div class="card-body">
-                    <a class="btn btn-primary float-end " href="{{ route('cars.create') }}">Add new Car</a>
+                    <a class="btn btn-primary float-end " href="{{ route('cars.create') }}">{{__('Pridėti naują mašiną')}}</a>
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>Automobilio nuotrauka</th>
-                            <th>Nuotraukų galerija</th>
-                            <th>Valstybiniai numeriai</th>
-                            <th>Automobilio markė</th>
-                            <th>Automobilio modelis</th>
-                            <th>Savininkas</th>
+                            <th>{{__('Automobilio nuotrauka')}}</th>
+                            <th>{{__('Nuotraukų galerija')}}</th>
+                            <th>{{__('Valstybiniai numeriai')}}</th>
+                            <th>{{__('Automobilio markė')}}</th>
+                            <th>{{__('Automobilio modelis')}}</th>
+                            <th>{{__('Automobilio savininkas')}}</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -32,7 +32,7 @@
                                         @endif
                                     @endforeach
                                 </td>
-                                <td> <a class="btn btn-primary " href="{{ route('cars.show', $car->id) }}">Galery</a></td>
+                                <td> <a class="btn btn-primary " href="{{ route('cars.show', $car->id) }}">{{__('Galerija')}}</a></td>
                                 <td>{{ $car->reg_number }}</td>
                                 <td>{{ $car->brand }}</td>
                                 <td>{{ $car->model }}</td>
@@ -40,12 +40,12 @@
                                     {{ $car->owner->name }}
                                     {{ $car->owner->surname }}
                                 </td>
-                                <td><a class="btn btn-success" href="{{ route('cars.edit', $car->id) }}">Update</a></td>
+                                <td><a class="btn btn-success" href="{{ route('cars.edit', $car->id) }}">{{__('Atnaujinti')}}</a></td>
                                 <td>
                                     <form action="{{ route('cars.destroy', $car->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger">{{__('Ištrinti')}}</button>
                                     </form>
                                 </td>
                             </tr>

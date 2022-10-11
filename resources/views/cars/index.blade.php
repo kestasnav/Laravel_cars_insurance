@@ -5,7 +5,9 @@
             <div class="card">
                 <div class="card-header">{{__('Automobiliai')}}</div>
                 <div class="card-body">
+                    @can('create', \App\Models\Car::class)
                     <a class="btn btn-primary float-end " href="{{ route('cars.create') }}">{{__('Pridėti naują mašiną')}}</a>
+                    @endcan
                     <table class="table">
                         <thead>
                         <tr>
@@ -40,13 +42,17 @@
                                     {{ $car->owner->name }}
                                     {{ $car->owner->surname }}
                                 </td>
+                                @can('update', $car)
                                 <td><a class="btn btn-success" href="{{ route('cars.edit', $car->id) }}">{{__('Atnaujinti')}}</a></td>
+                                    @endcan
                                 <td>
+                                    @can('delete', $car)
                                     <form action="{{ route('cars.destroy', $car->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger">{{__('Ištrinti')}}</button>
                                     </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

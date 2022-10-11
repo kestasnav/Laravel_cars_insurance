@@ -5,7 +5,9 @@
             <div class="card">
                 <div class="card-header">{{__('Savininkai')}}</div>
                 <div class="card-body">
+                    @can('create', \App\Models\Owner::class)
     <a class="btn btn-primary float-end" href="{{ route('owners.create') }}">{{__('Pridėti naują savininką')}}</a>
+                    @endcan
     <table class="table">
         <thead>
         <tr>
@@ -29,13 +31,17 @@
                         {{ $oc->model }}]
                     @endforeach
                 </td>
+                @can('update', $owner)
                 <td><a class="btn btn-success" href="{{ route('owners.edit', $owner->id) }}">{{__('Atnaujinti')}}</a> </td>
+                @endcan
                 <td>
+                    @can('delete', $owner)
                     <form action="{{ route('owners.destroy', $owner->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger">{{__('Ištrinti')}}</button>
                     </form>
+                    @endcan
                 </td>
             </tr>
         @endforeach

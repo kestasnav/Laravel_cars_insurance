@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class userType
 {
@@ -20,7 +21,7 @@ class userType
             return redirect('/cars');
         }
 
-        if ($request->user()->type=='user'){
+        if (Gate::denies('edit')){
             return redirect('/cars');
         }
 

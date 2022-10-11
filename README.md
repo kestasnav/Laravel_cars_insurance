@@ -1,5 +1,7 @@
-# Cars Page
-# ![screencapture-localhost-Laravel-draudimas-public-cars-2022-10-07-16_17_26](https://user-images.githubusercontent.com/107037107/194563150-d4f93505-46f6-48fa-bb60-9f8e03c41a10.png)
+# Cars Page EN
+# ![screencapture-localhost-Laravel-draudimas-public-cars-2022-10-10-14_31_05](https://user-images.githubusercontent.com/107037107/194856876-292dc17e-513d-4157-abb7-5ac8127232cb.png)
+# Cars Page LT
+# ![screencapture-localhost-Laravel-draudimas-public-cars-2022-10-10-14_31_27](https://user-images.githubusercontent.com/107037107/194856954-bda50262-149f-43f5-b524-713a23d014bc.png)
 # Gallery 
 # ![screencapture-localhost-Laravel-draudimas-public-cars-3-2022-10-07-16_18_04](https://user-images.githubusercontent.com/107037107/194563272-f7d65757-8bf6-4900-8f5b-16fabad4fb3c.png)
 # Owners Page
